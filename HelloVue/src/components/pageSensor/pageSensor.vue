@@ -2,13 +2,17 @@
   <div>
     pageSensor {{ text }} count is {{ count }}
     <div>データ{{ data }}</div>
+    <li v-for="item in data">
+      {{ item.title }}
+    </li>
     <button @click="incrementAsync">async-increment</button>
     <button @click="sampleAPI">sampleAPI</button>
+    <button @click="resetData">resetData</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   computed: {
     ...mapState([
@@ -21,6 +25,9 @@ export default {
     ...mapActions([
       'incrementAsync',
       'sampleAPI'
+    ]),
+    ...mapMutations([
+      'resetData'
     ])
   },
   mounted () {

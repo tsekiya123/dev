@@ -17,6 +17,9 @@ const mutations = {
   },
   getData (state, data) {
     state.data = data
+  },
+  resetData (state) {
+    state.data = []
   }
 }
 
