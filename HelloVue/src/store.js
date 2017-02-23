@@ -7,7 +7,8 @@ Vue.use(Vuex)
 const state = {
   count: 0,
   data: [],
-  text: 'hello'
+  text: 'hello',
+  deviceConfigInfo: {}
 }
 
 const mutations = {
@@ -20,6 +21,18 @@ const mutations = {
   },
   resetData (state) {
     state.data = []
+  },
+  setDeviceConfigInfo (state, type) {
+    state.deviceConfigInfo = {
+      'type': type,
+      'name': ''
+    }
+  },
+  setDeviceConfigInfoName (state, name) {
+    state.deviceConfigInfo.name = name
+  },
+  initDeviceConfigInfo (state) {
+    state.deviceConfigInfo = {}
   }
 }
 
@@ -49,6 +62,10 @@ const actions = {
       console.log('api is called.response is ', response)
       commit('getData', response.data)
     })
+  },
+  getDeviceConfigInfoName ({ commit }) {
+    console.log('getDeviceConfigInfoName is called')
+    commit('setDeviceConfigInfoName', 'responseName')
   }
 }
 

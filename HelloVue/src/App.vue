@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <div>app</div>
+    <!-- <div>app</div>
     <pageSensor></pageSensor>
     <pageTop></pageTop>
     <pageSensor></pageSensor>
-    <pageTop></pageTop>
+    <pageTop></pageTop> -->
+    <router-link to="/config">設定画面へ</router-link>
+    <div class="view">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -22,4 +26,8 @@ export default {
 </script>
 
 <style>
+div.view {
+  border-width: thick;
+  border-color: red;
+}
 </style>
