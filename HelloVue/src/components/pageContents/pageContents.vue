@@ -1,19 +1,24 @@
 <template>
   <div class="contents">
+    <div @click="getIndex()">getIndex</div>
     <!-- swiper -->
     <div class="tab_container">
-      <div class="swiper-button-prev" slot="button-prev">TOP</div>
-      <div class="swiper-button-next" slot="button-next">SENSOR</div>
+      <div class="swiper-button-prev" @click="slideTo(0)">TOP</div>
+      <div class="swiper-button-next" @click="slideTo(1)">SENSOR</div>
     </div>
-    <swiper :options="swiperOption">
+    <div id="navigation">
+      <div id="active_bar">bar</div>
+    </div>
+    <swiper :options="swiperOption" ref="mySwiper">
       <swiper-slide>Slide 1</swiper-slide>
       <swiper-slide>Slide 2</swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
 </template>
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+
+let getIndexFunc
 
 export default {
   name: 'Contents',
@@ -24,14 +29,34 @@ export default {
   data () {
     return {
       swiperOption: {
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        pagination: '.swiper-pagination',
         paginationType: 'progress',
-        loop: true,
-        initialSlide: 0 // Topページ:0,Sensorページ:1
+        initialSlide: 0, // Topページ:0,Sensorページ:1
+        onSlideChangeEnd: function () {
+          // ActiveなスライドのIndexを取得する
+          console.log('onTouchEnd called')
+          let bar = document.getElementById('active_bar')
+          if (getIndexFunc() === 0) {
+            bar.style.transform = 'translateX(0)'
+          } else if (getIndexFunc() === 1) {
+            bar.style.transform = 'translateX(100%)'
+          }
+        }
       }
     }
+  },
+  methods: {
+    slideTo: function (index) {
+      console.log('slideTo called')
+      this.$refs.mySwiper.swiper.slideTo(index)
+    },
+    getIndex: function () {
+      console.log('getIndex called')
+      console.log('index is ', this.$refs.mySwiper.swiper.activeIndex)
+      return this.$refs.mySwiper.swiper.activeIndex
+    }
+  },
+  mounted: function () {
+    getIndexFunc = this.getIndex
   }
 }
 </script>
@@ -59,5 +84,13 @@ export default {
 .tab_container {
   display: flex;
   justify-content: space-between;
+}
+#navigation {
+  background-color: gray
+}
+#active_bar {
+  width: 50%;
+  background-color: orange;
+  transition-duration:0.3s;
 }
 </style>
