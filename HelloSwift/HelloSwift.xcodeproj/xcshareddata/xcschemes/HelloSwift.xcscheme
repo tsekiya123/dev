@@ -1,0 +1,51 @@
+Unstaged changes after reset:
+M	HelloSwift/HelloSwift.xcodeproj/project.pbxproj
+M	HelloSwift/HelloSwift.xcodeproj/project.xcworkspace/xcuserdata/t_sekiya.xcuserdatad/UserInterfaceState.xcuserstate
+M	HelloSwift/HelloSwift.xcodeproj/xcshareddata/xcschemes/HelloSwift.xcscheme
+M	HelloSwift/HelloSwift.xcodeproj/xcuserdata/t_sekiya.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+D	HelloSwift/HelloSwift.xcodeproj/xcuserdata/t_sekiya.xcuserdatad/xcschemes/HelloSwift.xcscheme
+M	HelloSwift/HelloSwift/ViewController.swift
+M	HelloSwift/Podfile.lock
+M	HelloSwift/Pods/Alamofire/LICENSE
+M	HelloSwift/Pods/Alamofire/README.md
+M	HelloSwift/Pods/Alamofire/Source/Alamofire.swift
+D	HelloSwift/Pods/Alamofire/Source/Download.swift
+D	HelloSwift/Pods/Alamofire/Source/Error.swift
+D	HelloSwift/Pods/Alamofire/Source/Manager.swift
+M	HelloSwift/Pods/Alamofire/Source/MultipartFormData.swift
+M	HelloSwift/Pods/Alamofire/Source/NetworkReachabilityManager.swift
+M	HelloSwift/Pods/Alamofire/Source/Notifications.swift
+M	HelloSwift/Pods/Alamofire/Source/ParameterEncoding.swift
+M	HelloSwift/Pods/Alamofire/Source/Request.swift
+M	HelloSwift/Pods/Alamofire/Source/Response.swift
+M	HelloSwift/Pods/Alamofire/Source/ResponseSerialization.swift
+M	HelloSwift/Pods/Alamofire/Source/Result.swift
+M	HelloSwift/Pods/Alamofire/Source/ServerTrustPolicy.swift
+D	HelloSwift/Pods/Alamofire/Source/Stream.swift
+M	HelloSwift/Pods/Alamofire/Source/Timeline.swift
+D	HelloSwift/Pods/Alamofire/Source/Upload.swift
+M	HelloSwift/Pods/Alamofire/Source/Validation.swift
+M	HelloSwift/Pods/Manifest.lock
+M	HelloSwift/Pods/Pods.xcodeproj/project.pbxproj
+M	HelloSwift/Pods/Pods.xcodeproj/xcuserdata/t_sekiya.xcuserdatad/xcschemes/Pods-HelloSwift.xcscheme
+M	HelloSwift/Pods/Pods.xcodeproj/xcuserdata/t_sekiya.xcuserdatad/xcschemes/Pods-HelloSwiftTests.xcscheme
+M	HelloSwift/Pods/Pods.xcodeproj/xcuserdata/t_sekiya.xcuserdatad/xcschemes/Pods-HelloSwiftUITests.xcscheme
+M	HelloSwift/Pods/Pods.xcodeproj/xcuserdata/t_sekiya.xcuserdatad/xcschemes/xcschememanagement.plist
+M	HelloSwift/Pods/Target Support Files/Alamofire/Info.plist
+M	HelloSwift/Pods/Target Support Files/Pods-HelloSwift/Pods-HelloSwift-acknowledgements.markdown
+M	HelloSwift/Pods/Target Support Files/Pods-HelloSwift/Pods-HelloSwift-acknowledgements.plist
+D	test/test.xcodeproj/project.pbxproj
+D	test/test.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+D	test/test.xcodeproj/project.xcworkspace/xcuserdata/t_sekiya.xcuserdatad/UserInterfaceState.xcuserstate
+D	test/test.xcodeproj/xcuserdata/t_sekiya.xcuserdatad/xcschemes/test.xcscheme
+D	test/test.xcodeproj/xcuserdata/t_sekiya.xcuserdatad/xcschemes/xcschememanagement.plist
+D	test/test/AppDelegate.swift
+D	test/test/Assets.xcassets/AppIcon.appiconset/Contents.json
+D	test/test/Base.lproj/LaunchScreen.storyboard
+D	test/test/Base.lproj/Main.storyboard
+D	test/test/Info.plist
+D	test/test/ViewController.swift
+D	test/testTests/Info.plist
+D	test/testTests/testTests.swift
+D	test/testUITests/Info.plist
+D	test/testUITests/testUITests.swift

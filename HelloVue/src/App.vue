@@ -13,15 +13,8 @@
 </template>
 
 <script>
-import PageSensor from './components/pageSensor/pageSensor'
-import PageTop from './components/pageTop/pageTop'
-
 export default {
-  name: 'app',
-  components: {
-    PageSensor,
-    PageTop
-  }
+  name: 'app'
 }
 </script>
 

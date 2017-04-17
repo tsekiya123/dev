@@ -1,24 +1,27 @@
 <template>
   <div class="contents">
     <div @click="getIndex()">getIndex</div>
+    <div>count is {{ count }}</div>
     <!-- swiper -->
     <div class="tab_container">
       <div class="swiper-button-prev" @click="slideTo(0)">TOP</div>
       <div class="swiper-button-next" @click="slideTo(1)">SENSOR</div>
     </div>
-    <div id="navigation">
+    <!-- <div id="navigation">
       <div id="active_bar">bar</div>
-    </div>
+    </div> -->
     <swiper :options="swiperOption" ref="mySwiper">
       <swiper-slide>Slide 1</swiper-slide>
       <swiper-slide>Slide 2</swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
-let getIndexFunc
+// let getIndexFunc
 
 export default {
   name: 'Contents',
@@ -26,20 +29,29 @@ export default {
     'swiper': swiper,
     'swiperSlide': swiperSlide
   },
+  computed: {
+    ...mapState([
+      'count'
+    ])
+  },
   data () {
     return {
       swiperOption: {
+        pagination: '.swiper-pagination',
         paginationType: 'progress',
         initialSlide: 0, // Topページ:0,Sensorページ:1
-        onSlideChangeEnd: function () {
+        onSlideChangeStart: function () {
           // ActiveなスライドのIndexを取得する
-          console.log('onTouchEnd called')
+          // console.log('onTouchEnd called')
           let bar = document.getElementById('active_bar')
           if (getIndexFunc() === 0) {
             bar.style.transform = 'translateX(0)'
           } else if (getIndexFunc() === 1) {
             bar.style.transform = 'translateX(100%)'
           }
+        },
+        paginationProgressRender: function (swiper, progressbarClass) {
+          return '<div class="bg_orange"/>'
         }
       }
     }
@@ -48,15 +60,19 @@ export default {
     slideTo: function (index) {
       console.log('slideTo called')
       this.$refs.mySwiper.swiper.slideTo(index)
-    },
-    getIndex: function () {
-      console.log('getIndex called')
-      console.log('index is ', this.$refs.mySwiper.swiper.activeIndex)
-      return this.$refs.mySwiper.swiper.activeIndex
     }
+    // getIndex: function () {
+    //   console.log('getIndex called')
+    //   console.log('index is ', this.$refs.mySwiper.swiper.activeIndex)
+    //   return this.$refs.mySwiper.swiper.activeIndex
+    // }
   },
   mounted: function () {
-    getIndexFunc = this.getIndex
+    // setTimeout(function () {
+    //   console.log('Timeout')
+    // }, 3000)
+    // getIndexFunc = this.getIndex
+    console.log('mounted')
   }
 }
 </script>
@@ -92,5 +108,10 @@ export default {
   width: 50%;
   background-color: orange;
   transition-duration:0.3s;
+}
+.bg_orange {
+  width: 50%;
+  height: 0.25em;
+  background: orange;
 }
 </style>
