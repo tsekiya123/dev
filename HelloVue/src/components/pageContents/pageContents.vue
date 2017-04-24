@@ -1,117 +1,80 @@
 <template>
-  <div class="contents">
-    <div @click="getIndex()">getIndex</div>
-    <div>count is {{ count }}</div>
-    <!-- swiper -->
-    <div class="tab_container">
-      <div class="swiper-button-prev" @click="slideTo(0)">TOP</div>
-      <div class="swiper-button-next" @click="slideTo(1)">SENSOR</div>
+  <div>
+    <div class="swiper-container gallery-thumbs">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">TOP</div>
+        <div class="swiper-slide">SENSOR</div>
+      </div>
     </div>
-    <!-- <div id="navigation">
-      <div id="active_bar">bar</div>
-    </div> -->
-    <swiper :options="swiperOption" ref="mySwiper">
-      <swiper-slide>Slide 1</swiper-slide>
-      <swiper-slide>Slide 2</swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
+    <div class="swiper-container gallery-top">
+      <div class="swiper-wrapper gallery-top-w">
+        <div class="swiper-slide"><PageTop/></div>
+        <div class="swiper-slide"><PageSensor/></div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-
-// let getIndexFunc
+import Swiper from '../../../static/swiper.min.js'
+import PageTop from '../pageTop/pageTop'
+import PageSensor from '../pageSensor/pageSensor'
 
 export default {
   name: 'Contents',
   components: {
-    'swiper': swiper,
-    'swiperSlide': swiperSlide
-  },
-  computed: {
-    ...mapState([
-      'count'
-    ])
-  },
-  data () {
-    return {
-      swiperOption: {
-        pagination: '.swiper-pagination',
-        paginationType: 'progress',
-        initialSlide: 0, // Topページ:0,Sensorページ:1
-        onSlideChangeStart: function () {
-          // ActiveなスライドのIndexを取得する
-          // console.log('onTouchEnd called')
-          let bar = document.getElementById('active_bar')
-          if (getIndexFunc() === 0) {
-            bar.style.transform = 'translateX(0)'
-          } else if (getIndexFunc() === 1) {
-            bar.style.transform = 'translateX(100%)'
-          }
-        },
-        paginationProgressRender: function (swiper, progressbarClass) {
-          return '<div class="bg_orange"/>'
-        }
-      }
-    }
-  },
-  methods: {
-    slideTo: function (index) {
-      console.log('slideTo called')
-      this.$refs.mySwiper.swiper.slideTo(index)
-    }
-    // getIndex: function () {
-    //   console.log('getIndex called')
-    //   console.log('index is ', this.$refs.mySwiper.swiper.activeIndex)
-    //   return this.$refs.mySwiper.swiper.activeIndex
-    // }
+    PageTop,
+    PageSensor
   },
   mounted: function () {
-    // setTimeout(function () {
-    //   console.log('Timeout')
-    // }, 3000)
-    // getIndexFunc = this.getIndex
-    console.log('mounted')
+    console.log('parent')
+    var gThumbs = new Swiper('.gallery-thumbs', {
+      speed: 400,
+      spaceBetween: 0,
+      slideToClickedSlide: true,
+      touchRatio: 0.2,
+      slidesPerView: 2,
+      loop: false
+    })
+    var gTop = new Swiper('.gallery-top', {
+      speed: 400,
+      spaceBetween: 0,
+      autoHeight: true,
+      slidesPerView: 1
+    })
+    gThumbs.params.control = gTop
+    gTop.params.control = gThumbs
   }
 }
 </script>
 
 <style>
-.contents {
-  border: 1em;
-  background-color: lightgray;
-  width: 100vw;
-  height: 100vh;
+.swiper-container {
+    width: 100%;
+    height: 300px;
 }
 .swiper-slide {
-  height: 100%;
+    background-size: cover;
+    background-position: center;
 }
-.swiper-container {
-  height: 100%;
+.gallery-top {
+    height: 80%;
+    width: 100%;
+    background-color: pink;
+    min-height: 200px;
 }
-.tab_container div {
-  position: relative !important;
-  width: 100% !important;
-  margin-top: 0 !important;
-  background-image: none !important;
-  text-align: center;
+.gallery-thumbs {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    background-color: orange;
 }
-.tab_container {
-  display: flex;
-  justify-content: space-between;
+.gallery-thumbs .swiper-slide {
+    width: 50%;
+    height: 100%;
+    opacity: 0.2;
 }
-#navigation {
-  background-color: gray
-}
-#active_bar {
-  width: 50%;
-  background-color: orange;
-  transition-duration:0.3s;
-}
-.bg_orange {
-  width: 50%;
-  height: 0.25em;
-  background: orange;
+.gallery-thumbs .swiper-slide-active {
+    opacity: 1;
 }
 </style>

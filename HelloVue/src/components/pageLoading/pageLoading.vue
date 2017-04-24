@@ -4,7 +4,13 @@
 
 <script>
 export default {
-  name: 'Loading'
+  name: 'Loading',
+  mounted: function () {
+    let router = this.$router
+    setTimeout(function () {
+      router.push('/contents')
+    }, 500)
+  }
 }
 </script>
 
